@@ -51,8 +51,8 @@ namespace DungeonsOfAWDragonsLair
             }
             if (monsterHere)
             {
-                music.BattleMusic();
                 Console.WriteLine("there is a monster in this room");
+                music.BattleMusic();
             }
         }
         private void AskForMovement()
@@ -83,8 +83,8 @@ namespace DungeonsOfAWDragonsLair
                     }
                     else
                     {
-                        backPackFull = true;
                         music.CantPickUpItemSFX();
+                        backPackFull = true;
                     }
                     //kommentar
                 }
