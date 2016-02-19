@@ -18,6 +18,7 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
+            music.IntroMusic();
             CreatePlayer();
             CreateWorld();
             do
@@ -142,7 +143,7 @@ namespace DungeonsOfAWDragonsLair
         }
         private void DisplayWorld()
         {
-            music.IntroMusic();
+            
             for (int y = 0; y < WorldHeight; y++)
             {
                 for (int x = 0; x < WorldWidth; x++)
