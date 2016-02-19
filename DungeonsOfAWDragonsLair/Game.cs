@@ -15,6 +15,7 @@ namespace DungeonsOfAWDragonsLair
         Room[,] world;
         bool backPackFull = false;
         bool monsterHere = false;
+        Music music = new Music();
         public void Start()
         {
             CreatePlayer();
@@ -48,7 +49,10 @@ namespace DungeonsOfAWDragonsLair
                 Console.WriteLine("You picked up item!");
             }
             if (monsterHere)
+            {
+                music.BattleMusic();
                 Console.WriteLine("there is a monster in this room");
+            }
         }
         private void AskForMovement()
         {
@@ -77,7 +81,10 @@ namespace DungeonsOfAWDragonsLair
                         backPackFull = false;
                     }
                     else
+                    {
                         backPackFull = true;
+                        music.CantPickUpItemSFX();
+                    }
                     //kommentar
                 }
                 if (world[x, y].MonsterInRoom != null)
@@ -125,6 +132,7 @@ namespace DungeonsOfAWDragonsLair
         }
         private void DisplayWorld()
         {
+            music.IntroMusic();
             for (int y = 0; y < WorldHeight; y++)
             {
                 for (int x = 0; x < WorldWidth; x++)
@@ -151,6 +159,7 @@ namespace DungeonsOfAWDragonsLair
         private void PickUpItem(Item item)
         {
             player.BackPack.Add(item);
+            music.PickUpItemSFX();
         }
     }
 }
