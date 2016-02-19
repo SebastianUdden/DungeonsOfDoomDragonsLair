@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfAWDragonsLair
 {
-    class Player : Character
+    sealed class Player : Character
     {
         public Player(string name, int health, int attackStrength) : base(name, health, attackStrength)
         {
