@@ -13,6 +13,11 @@ namespace DungeonsOfAWDragonsLair
 
         }
 
+        public override void Fight(Character opponent)
+        {
+            Health -= opponent.AttackStrength; 
+        }
+
         public override string Message()
         {
             return "monster message";

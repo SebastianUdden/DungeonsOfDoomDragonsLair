@@ -23,9 +23,9 @@ namespace DungeonsOfAWDragonsLair
             return "player message";
         }
 
-        public override void Fight()
+        public override void Fight(Character opponent)
         {
-            throw new NotImplementedException();
+            Health -= opponent.AttackStrength; 
         }
     }
 }
