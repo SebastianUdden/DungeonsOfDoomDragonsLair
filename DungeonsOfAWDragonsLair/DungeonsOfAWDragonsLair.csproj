@@ -50,6 +50,7 @@
     <Compile Include="Item.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="Ogre.cs" />
+    <Compile Include="Music.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
