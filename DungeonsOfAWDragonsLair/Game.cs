@@ -7,7 +7,7 @@ namespace DungeonsOfAWDragonsLair
 {
     class Game
     {
-        //kommentar
+        
         List<Item> itemsInWorld = new List<Item>() { new Item("Sword", 10), new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) };
         const int WorldWidth = 20;
         const int WorldHeight = 10;
@@ -88,7 +88,11 @@ namespace DungeonsOfAWDragonsLair
                     //kommentar
                 }
                 if (world[x, y].MonsterInRoom != null)
+                {
+                    player.Fight(world[x, y].MonsterInRoom);
+                    world[x, y].MonsterInRoom.Fight(player);
                     monsterHere = true;
+                }
                 else
                     monsterHere = false;
             }
@@ -140,7 +144,7 @@ namespace DungeonsOfAWDragonsLair
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
                         Console.Write('P');
-                    else if (room.MonsterInRoom != null)
+                    else if (room.MonsterInRoom != null && room.MonsterInRoom.Health>0)
                     {
                         Monster monster = room.MonsterInRoom;
                         Console.Write('M');

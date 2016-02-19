@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfAWDragonsLair
 {
-    class Player : Character
+    sealed class Player : Character
     {
         public Player(string name, int health, int attackStrength) : base(name, health, attackStrength)
         {
@@ -17,5 +17,15 @@ namespace DungeonsOfAWDragonsLair
         public int Y { get; set; }
 
         public List<Item> BackPack { get; set; }
+
+        public override string Message()
+        {
+            return "player message";
+        }
+
+        public override void Fight(Character opponent)
+        {
+            Health -= opponent.AttackStrength; 
+        }
     }
 }
