@@ -19,5 +19,7 @@ namespace DungeonsOfAWDragonsLair
 
         public abstract string Message();
 
+        public abstract void Fight();
+
     }
 }

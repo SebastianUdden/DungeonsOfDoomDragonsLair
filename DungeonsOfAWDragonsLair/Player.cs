@@ -22,5 +22,10 @@ namespace DungeonsOfAWDragonsLair
         {
             return "player message";
         }
+
+        public override void Fight()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
