@@ -19,8 +19,11 @@ namespace DungeonsOfAWDragonsLair
 
             //opponent.AttackStrength >= AttackStrength * 2 ? Health = 0 : base.Fight(opponent);
 
-            if ((opponent.AttackStrength / (AttackStrength )>= 2))
+            if ((opponent.AttackStrength / (AttackStrength) >= 2))
+            {
                 Health = 0;
+                AttackStrength = 0;
+            }
             else
                 base.Fight(opponent);
         }

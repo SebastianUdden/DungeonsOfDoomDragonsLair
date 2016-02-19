@@ -119,7 +119,7 @@ namespace DungeonsOfAWDragonsLair
                     if (rndGen.Next(0, 26) > 24)
                     {
                         if (rndGen.Next(0, 2) == 1)
-                            room.MonsterInRoom = new Ogre("Monster", 30, 10);
+                            room.MonsterInRoom = new Ogre("Ogre", 30, 10);
                         else
                             room.MonsterInRoom = new Gremlin("Gremlin", 10, 5);
                     }
@@ -154,7 +154,7 @@ namespace DungeonsOfAWDragonsLair
                     else if (room.MonsterInRoom != null && room.MonsterInRoom.Health>0)
                     {
                         Monster monster = room.MonsterInRoom;
-                        Console.Write('M');
+                        Console.Write(room.MonsterInRoom.Name[0]);
                     }
                     else if (room.ItemInRoom != null)
                     {
