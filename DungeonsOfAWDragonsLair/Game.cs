@@ -7,7 +7,7 @@ namespace DungeonsOfAWDragonsLair
 {
     class Game
     {
-        //kommentar
+        
         List<Item> itemsInWorld = new List<Item>() { new Item("Sword", 10), new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) };
         const int WorldWidth = 20;
         const int WorldHeight = 10;

@@ -12,5 +12,10 @@ namespace DungeonsOfAWDragonsLair
         {
 
         }
+
+        public override string Message()
+        {
+            return "monster message";
+        }
     }
 }
