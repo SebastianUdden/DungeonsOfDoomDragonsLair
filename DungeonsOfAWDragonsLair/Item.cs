@@ -8,6 +8,7 @@ namespace DungeonsOfAWDragonsLair
 {
     class Item : GameObject
     {
+        // This is a item
         public Item(string name, int weigth) : base(name)
         {
             Weight = weigth;
