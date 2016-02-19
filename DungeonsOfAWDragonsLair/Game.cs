@@ -83,7 +83,10 @@ namespace DungeonsOfAWDragonsLair
                 if (world[x, y].MonsterInRoom != null)
                 {
                     player.Fight(world[x, y].MonsterInRoom);
-                    world[x, y].MonsterInRoom.Fight(player);
+                    if (world[x, y].MonsterInRoom.Health > 0)
+                    {
+                        world[x, y].MonsterInRoom.Fight(player);
+                    }
                     monsterHere = true;
                 }
                 else
@@ -107,7 +110,10 @@ namespace DungeonsOfAWDragonsLair
                     Room room = new Room();
                     if (rndGen.Next(0, 26) > 24)
                     {
-                        room.MonsterInRoom = new Monster("Monster", 30, 10);
+                        if (rndGen.Next(0, 2) == 1)
+                            room.MonsterInRoom = new Ogre("Monster", 30, 10);
+                        else
+                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5);
                     }
                     if (rndGen.Next(0, 21) > 19 && itemsInWorld.Count() > 0)
                     {
@@ -125,7 +131,7 @@ namespace DungeonsOfAWDragonsLair
         }
         private void CreatePlayer()
         {
-            player = new Player("Player", 100, 20);
+            player = new Player("Player", 100, 25);
         }
         private void DisplayWorld()
         {
