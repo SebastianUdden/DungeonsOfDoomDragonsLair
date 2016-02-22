@@ -91,7 +91,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
-                        PickUpItem(item);
+                        
                         DelayMessage("You picked up item!");
                         music.PickUpItemSFX();
                         world[x, y].ItemInRoom.PickUpItem(player);
