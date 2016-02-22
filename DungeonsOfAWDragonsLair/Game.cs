@@ -180,7 +180,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
-                        DelayMessage("You picked up item!", 20);
+                        DelayMessage($"You picked up item!", 20);
                         music.PickUpItemSFX();
                         world[x, y].ItemInRoom.PickUpItem(player);
                         world[x, y].ItemInRoom = null;
