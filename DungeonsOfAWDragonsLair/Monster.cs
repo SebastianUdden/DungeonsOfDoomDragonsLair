@@ -8,9 +8,10 @@ namespace DungeonsOfAWDragonsLair
 {
     class Monster : Character
     {
+        public static int MonsterCount { get; set; }
         public Monster(string name, int health, int attackStrength) : base(name, health, attackStrength)
         {
-
+            MonsterCount++;
         }
 
         public override void Fight(Character opponent)
