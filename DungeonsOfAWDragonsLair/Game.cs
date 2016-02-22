@@ -20,6 +20,7 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
+            //GameOver();
             Parallel.Invoke(() =>
             {
                 music.IntroMusic();
@@ -224,36 +225,46 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
         }
         private void GameOver()
         {
-            CurrentAction = 4;
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            DelayMessage(@"
+            Parallel.Invoke(() =>
+            {
+                music.GameOverMusic();
+            },
+                            () =>
+                            {
+                                CurrentAction = 4;
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                DelayMessage(@"
         ________________________________________________
 ________|                                               |_______
 \       |", 1); Console.ForegroundColor = ConsoleColor.Yellow; DelayMessage(@"                  GAME  OVER", 5); Console.ForegroundColor = ConsoleColor.DarkRed; DelayMessage(@"                   |      /
  \      |                                               |     /
  /      |_______________________________________________|     \
 /__________)                                        (__________\", 1);
-            Console.WriteLine();
-            Console.ReadKey();
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            DelayMessage(@"
+                                Console.WriteLine();
+                                Console.ReadKey();
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                DelayMessage(@"
                 Would you like to play again?(y/n) ", 20);
-            string input = Console.ReadLine().ToLower();
-            if (input == "y")
-                Start();
-            else if (input == "n")
-                Console.WriteLine(@"
+                                string input = Console.ReadLine().ToLower();
+                                if (input == "y")
+                                    Start();
+                                else if (input == "n")
+                                    Console.WriteLine(@"
                     Thanks for playing!");
-            else
-            {
-                Console.WriteLine(@"
+                                else
+                                {
+                                    Console.WriteLine(@"
                     input is not valid!");
-                Console.ReadKey();
-                GameOver();
-            }
+                                    Console.ReadKey();
+                                    GameOver();
+                                }
 
 
+                            }
+                        );
+
+            
         }
 
         

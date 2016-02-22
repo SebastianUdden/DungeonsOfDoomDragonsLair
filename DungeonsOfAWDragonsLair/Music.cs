@@ -153,10 +153,14 @@ namespace DungeonsOfAWDragonsLair
         public void GameOverMusic()
         {
             Console.Beep(C5, HalfNote140);
-            Console.Beep(G5, HalfNote140);
-            Console.Beep(E5, WholeNote140);
-            Console.Beep(D5, WholeNote140);
-            Console.Beep(C5, WholeNote140);
+            Console.Beep(D5, HalfNote140);
+            Console.Beep(E5, HalfNote140);
+            Console.Beep(G5, QuarterNote140);
+            Console.Beep(E5, QuarterNote140);
+            Console.Beep(D5, HalfNote140);
+            Console.Beep(C5, QuarterNote140);
+            Console.Beep(D5, QuarterNote140);
+            Console.Beep(C5, HalfNote140);
         }
     }
 }
