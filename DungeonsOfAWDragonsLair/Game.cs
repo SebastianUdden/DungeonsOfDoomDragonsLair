@@ -8,7 +8,7 @@ namespace DungeonsOfAWDragonsLair
 {
     class Game
     {
-
+        
         List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2, 20), new Sword("Sword", 10, 15), new Axe("Axe", 3, 10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
         const int WorldHeight = 10;
@@ -20,14 +20,24 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
+            //GameOver();
+            Parallel.Invoke(() =>
+            {
+                music.IntroMusic();
+            },
+                            () =>
+                            {
             Console.Clear();
+            Thread.Sleep(500);
             Intro();
-
+                            }
+                        );
+            
             CreatePlayer();
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                MusicLoop();
+                    MusicLoop();
             },
                             () =>
                             {
@@ -40,7 +50,7 @@ namespace DungeonsOfAWDragonsLair
                                     AskForMovement();
                                 } while (player.Health > 0 && Monster.MonsterCount > 0);
                                 GameOver();
-                            }
+                            } 
                         );
         }
 
@@ -87,7 +97,6 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
         The resourceful knight continues the quest for vengeance against 
         the mighty Z'hur. He must collect items to increase his strength 
         and defeat the devious monsters 'hidden' throughout the map.", 20);
-            music.IntroMusic();
         }
 
         public void MusicLoop()
@@ -107,6 +116,10 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 music.WinFight();
                 CurrentAction = 1;
                 MusicLoop();
+            }
+            else if (CurrentAction == 4)
+            {
+                music.GameOverMusic();
             }
 
             MusicLoop();
@@ -144,7 +157,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
-        }
+            }
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
@@ -164,7 +177,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 player.Y = y;
                 if (world[x, y].ItemInRoom != null)
                 {
-
+                    
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
                         DelayMessage($"You picked up item!", 20);
@@ -192,8 +205,8 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         CurrentAction = 3;
                     }
                     DelayMessage(world[x, y].MonsterInRoom.Message(player), 20);
-                    Console.ReadLine();
-
+                        Console.ReadLine();
+               
                     player.Fight(world[x, y].MonsterInRoom);
                     if (world[x, y].MonsterInRoom.Health > 0)
                     {
@@ -206,32 +219,55 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     }
                     //monsterHere = true;
                 }
-
-                //monsterHere = false;
+                
+                    //monsterHere = false;
             }
         }
         private void GameOver()
         {
-            Console.Clear();
-            DelayMessage("Game Over", 20);
-            Console.WriteLine();
-            DelayMessage("Would you like to play again?(y/n) ", 20);
-            string input = Console.ReadLine().ToLower();
-            if (input == "y")
-                Start();
-            else if (input == "n")
-                Console.WriteLine("Thanks for playing!");
-            else
+            Parallel.Invoke(() =>
             {
-                Console.WriteLine("input is not valid");
-                Console.ReadKey();
-                GameOver();
-            }
+                music.GameOverMusic();
+            },
+                            () =>
+                            {
+                                CurrentAction = 4;
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                DelayMessage(@"
+        ________________________________________________
+________|                                               |_______
+\       |", 1); Console.ForegroundColor = ConsoleColor.Yellow; DelayMessage(@"                  GAME  OVER", 5); Console.ForegroundColor = ConsoleColor.DarkRed; DelayMessage(@"                   |      /
+ \      |                                               |     /
+ /      |_______________________________________________|     \
+/__________)                                        (__________\", 1);
+                                Console.WriteLine();
+                                Console.ReadKey();
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                DelayMessage(@"
+                Would you like to play again?(y/n) ", 20);
+                                string input = Console.ReadLine().ToLower();
+                                if (input == "y")
+                                    Start();
+                                else if (input == "n")
+                                    Console.WriteLine(@"
+                    Thanks for playing!");
+                                else
+                                {
+                                    Console.WriteLine(@"
+                    input is not valid!");
+                                    Console.ReadKey();
+                                    GameOver();
+                                }
 
 
+                            }
+                        );
+
+            
         }
 
-
+        
         private void CreateWorld()
         {
             
@@ -274,7 +310,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.DarkGray;                        
                         Console.Write('P');
                     }
                     else if (room.MonsterInRoom != null && room.MonsterInRoom.Health > 0)
@@ -295,11 +331,11 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.Write(' ');
-                    }
+                }
                 }
                 Console.WriteLine();
             }
         }
-
+       
     }
 }

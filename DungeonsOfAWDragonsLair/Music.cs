@@ -70,6 +70,19 @@ namespace DungeonsOfAWDragonsLair
             Thread.Sleep(EigthNote140);
             Console.Beep(Ds5, QuarterNote140); // 1
             Console.Beep(B4, WholeNote140); // 1
+
+            Console.Beep(C4, EigthNote140); // 1
+            Thread.Sleep(EigthNote140);
+            Console.Beep(C4, EigthNote140); // 1
+            Thread.Sleep(EigthNote140);
+            Console.Beep(C4, EigthNote140); // 1
+            Console.Beep(D4, EigthNote140); // 1
+            Thread.Sleep(EigthNote140);
+            Console.Beep(D4, EigthNote140); // 1
+            Thread.Sleep(EigthNote140);
+            Console.Beep(D4, EigthNote140); // 1
+            Console.Beep(G4, WholeNote140); // 1
+            Console.Beep(C4, WholeNote140); // 1
         }
 
         public void AdventureMusic()
@@ -135,6 +148,19 @@ namespace DungeonsOfAWDragonsLair
         {
             Console.Beep(E4, HalfNote140); // 1
             Console.Beep(Ds4/2, QuarterNote140); // 1
+        }
+
+        public void GameOverMusic()
+        {
+            Console.Beep(C5, HalfNote140);
+            Console.Beep(D5, HalfNote140);
+            Console.Beep(E5, HalfNote140);
+            Console.Beep(G5, QuarterNote140);
+            Console.Beep(E5, QuarterNote140);
+            Console.Beep(D5, HalfNote140);
+            Console.Beep(C5, QuarterNote140);
+            Console.Beep(D5, QuarterNote140);
+            Console.Beep(C5, HalfNote140);
         }
     }
 }
