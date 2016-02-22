@@ -9,7 +9,7 @@ namespace DungeonsOfAWDragonsLair
     class Game
     {
         
-        List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2,20), new Sword("Sword", 10, 15) , new Axe("Axe",3,10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
+        List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2, 20), new Sword("Sword", 10, 15), new Axe("Axe", 3, 10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         Player player;
@@ -26,7 +26,9 @@ namespace DungeonsOfAWDragonsLair
             },
                             () =>
                             {
-                                Intro();
+            Console.Clear();
+            Thread.Sleep(500);
+            Intro();
                             }
                         );
             
@@ -45,7 +47,7 @@ namespace DungeonsOfAWDragonsLair
                                     Console.BackgroundColor = ConsoleColor.Black;
                                     DisplayStats();
                                     AskForMovement();
-                                } while (player.Health > 0);
+                                } while (player.Health > 0 && Monster.MonsterCount > 0);
                                 GameOver();
                             } 
                         );
@@ -113,6 +115,10 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 music.WinFight();
                 CurrentAction = 1;
                 MusicLoop();
+            }
+            else if (CurrentAction == 4)
+            {
+                music.GameOverMusic();
             }
 
             MusicLoop();
@@ -189,7 +195,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
-                    if (world[x,y].MonsterInRoom.Name == "Ogre")
+                    if (world[x, y].MonsterInRoom.Name == "Ogre")
                     {
                         CurrentAction = 2;
                     }
@@ -207,6 +213,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     }
                     else
                     {
+                        Monster.MonsterCount--;
                         world[x, y].MonsterInRoom = null;
                     }
                     //monsterHere = true;
@@ -217,8 +224,36 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
         }
         private void GameOver()
         {
+            CurrentAction = 4;
             Console.Clear();
-            DelayMessage("Game Over", 20);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            DelayMessage(@"
+        ________________________________________________
+________|                                               |_______
+\       |", 1); Console.ForegroundColor = ConsoleColor.Yellow; DelayMessage(@"                  GAME  OVER", 5); Console.ForegroundColor = ConsoleColor.DarkRed; DelayMessage(@"                   |      /
+ \      |                                               |     /
+ /      |_______________________________________________|     \
+/__________)                                        (__________\", 1);
+            Console.WriteLine();
+            Console.ReadKey();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            DelayMessage(@"
+                Would you like to play again?(y/n) ", 20);
+            string input = Console.ReadLine().ToLower();
+            if (input == "y")
+                Start();
+            else if (input == "n")
+                Console.WriteLine(@"
+                    Thanks for playing!");
+            else
+            {
+                Console.WriteLine(@"
+                    input is not valid!");
+                Console.ReadKey();
+                GameOver();
+            }
+
+
         }
 
         
@@ -267,7 +302,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         Console.ForegroundColor = ConsoleColor.DarkGray;                        
                         Console.Write('P');
                     }
-                    else if (room.MonsterInRoom != null && room.MonsterInRoom.Health>0)
+                    else if (room.MonsterInRoom != null && room.MonsterInRoom.Health > 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Monster monster = room.MonsterInRoom;
@@ -278,7 +313,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Item item = room.ItemInRoom;
-                        Console.Write(item.Name.Substring(0,1));
+                        Console.Write(item.Name.Substring(0, 1));
                         Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
