@@ -20,7 +20,15 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
-            Intro();
+            Parallel.Invoke(() =>
+            {
+                music.IntroMusic();
+            },
+                            () =>
+                            {
+                                Intro();
+                            }
+                        );
             
             CreatePlayer();
             CreateWorld();
@@ -86,7 +94,6 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
         The resourceful knight continues the quest for vengeance against 
         the mighty Z'hur. He must collect items to increase his strength 
         and defeat the devious monsters 'hidden' throughout the map.", 20);
-            music.IntroMusic();
         }
 
         public void MusicLoop()
