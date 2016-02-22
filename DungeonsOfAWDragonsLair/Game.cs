@@ -14,7 +14,7 @@ namespace DungeonsOfAWDragonsLair
         Player player;
         Room[,] world;
         bool backPackFull = false;
-        bool monsterHere = false;
+        //bool monsterHere = false;
         Music music = new Music();
         public void Start()
         {
@@ -49,11 +49,11 @@ namespace DungeonsOfAWDragonsLair
             {
                 Console.WriteLine("You picked up item!");
             }
-            if (monsterHere)
-            {
-                Console.WriteLine("there is a monster in this room");
-                music.BattleMusic();
-            }
+            //if (monsterHere)
+            //{
+            //    Console.WriteLine("there is a monster in this room");
+            //    music.BattleMusic();
+            //}
         }
         private void AskForMovement()
         {
@@ -95,10 +95,10 @@ namespace DungeonsOfAWDragonsLair
                     {
                         world[x, y].MonsterInRoom.Fight(player);
                     }
-                    monsterHere = true;
+                    //monsterHere = true;
                 }
-                else
-                    monsterHere = false;
+                
+                    //monsterHere = false;
             }
         }
         private void GameOver()
