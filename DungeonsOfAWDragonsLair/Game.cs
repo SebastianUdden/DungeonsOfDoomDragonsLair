@@ -63,10 +63,10 @@ namespace DungeonsOfAWDragonsLair
             {
                 Console.WriteLine("You picked up item!");
             }
-            if (monsterHere)
-            {
-                Console.WriteLine("there is a monster in this room");
-            }
+            //if (monsterHere)
+            //{
+            //    Console.WriteLine("there is a monster in this room");
+            //}
         }
         private void AskForMovement()
         {
