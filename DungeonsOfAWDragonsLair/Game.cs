@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 namespace DungeonsOfAWDragonsLair
 {
     class Game
@@ -135,6 +136,15 @@ namespace DungeonsOfAWDragonsLair
         {
             Console.Clear();
             Console.WriteLine("Game Over");
+        }
+
+        public void DelayMessage(string message, int msDelay = 20)
+        {
+            for (int i = 0; i < message.Count(); i++)
+            {
+                Console.Write(message[i]);
+                Thread.Sleep(msDelay);
+            }
         }
         private void CreateWorld()
         {
