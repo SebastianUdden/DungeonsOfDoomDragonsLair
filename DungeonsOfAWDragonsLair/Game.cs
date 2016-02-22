@@ -259,7 +259,7 @@ ________|                                               |_______
         
         private void CreateWorld()
         {
-            Random rndGen = new Random();
+            
             world = new Room[WorldWidth, WorldHeight];
             for (int y = 0; y < WorldHeight; y++)
             {
@@ -267,16 +267,16 @@ ________|                                               |_______
                 {
 
                     Room room = new Room();
-                    if (rndGen.Next(0, 26) > 24)
+                    if (RandomUtils.RandomNumber(0, 26) > 24)
                     {
-                        if (rndGen.Next(0, 2) == 1)
+                        if (RandomUtils.RandomNumber(0, 2) == 1)
                             room.MonsterInRoom = new Ogre("Ogre", 30, 10);
                         else
                             room.MonsterInRoom = new Gremlin("Gremlin", 10, 5);
                     }
-                    if (rndGen.Next(0, 21) > 19 && itemsInWorld.Count() > 0)
+                    if (RandomUtils.RandomNumber(0, 21) > 19 && itemsInWorld.Count() > 0)
                     {
-                        int rng = rndGen.Next(0, itemsInWorld.Count());
+                        int rng = RandomUtils.RandomNumber(0, itemsInWorld.Count());
                         room.ItemInRoom = itemsInWorld[rng];
                         itemsInWorld.RemoveAt(rng);
                     }
