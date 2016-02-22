@@ -91,20 +91,29 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     if ((player.BackPack.Sum(a => a.Weight) + item.Weight) <= 100)
                     {
                         PickUpItem(item);
+                        DelayMessage("You picked up item!");
                         world[x, y].ItemInRoom = null;
                         backPackFull = false;
                     }
                     else
                     {
                         music.CantPickUpItemSFX();
+                        DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!");
                         backPackFull = true;
                     }
                     //kommentar
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
-                        DelayMessage(world[x, y].MonsterInRoom.Message());
+                    if (world[x,y].MonsterInRoom.Name == "Ogre")
+                    {
                         music.BattleMusic();
+                    }
+                    else
+                    {
+                        music.WinFight();
+                    }
+                    DelayMessage(world[x, y].MonsterInRoom.Message());
                         Console.ReadLine();
                
                     player.Fight(world[x, y].MonsterInRoom);
@@ -196,16 +205,8 @@ and defeat the devious monsters 'hidden' throughout the map.");
         }
         private void PickUpItem(Item item)
         {
-            if (backPackFull)
-            {
-                DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!");
-            }
-            else
-            {
-                DelayMessage("You picked up item!");
-            }
-            player.BackPack.Add(item);
             music.PickUpItemSFX();
+            player.BackPack.Add(item);
         }
     }
 }
