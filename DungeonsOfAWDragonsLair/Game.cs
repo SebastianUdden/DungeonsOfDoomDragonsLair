@@ -20,10 +20,8 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
-            DelayMessage(@"The resourceful knight continues the quest for vengeance against 
-the mighty Z'hur. He must collect items to increase his strength 
-and defeat the devious monsters 'hidden' throughout the map.");
-            music.IntroMusic();
+            Intro();
+            
             CreatePlayer();
             CreateWorld();
             Parallel.Invoke(() =>
@@ -43,6 +41,52 @@ and defeat the devious monsters 'hidden' throughout the map.");
                                 GameOver();
                             } 
                         );
+        }
+
+        private void Intro()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            DelayMessage(@"
+
+=============================================================================
+==========================", 2);
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            DelayMessage(@" Dungeons of Doom ", 100);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            DelayMessage(@"=================================
+=============================================================================
+
+                      _
+                     /#\
+                    /###\     /\
+                   /  ###\   /##\  /\
+                  /      #\ /####\/##\
+                 /  /      /   # /  ##\             _       /\
+               // //  /\  /    _/  /  #\ _         /#\    _/##\    /\
+              // /   /  \     /   /    #\ \      _/###\_ /   ##\__/ _\
+             /  \   / .. \   / /   _   { \ \   _/       / //    /    \\
+     /\     /    /\  ...  \_/   / / \   } \ | /  /\  \ /  _    /  /    \ /\
+  _ /  \  /// / .\  ..%:.  /... /\ . \ {:  \\   /. \     / \  /   ___   /  \
+ /.\ .\.\// \/... \.::::..... _/..\ ..\:|:. .  / .. \\  /.. \    /...\ /  \ \
+/...\.../..:.\. ..:::::::..:..... . ...\{:... / %... \\/..%. \  /./:..\__   \
+ .:..\:..:::....:::;;;;;;::::::::.:::::.\}.....::%.:. \ .:::. \/.%:::.:..\
+::::...:::;;:::::;;;;;;;;;;;;;;:::::;;::{:::::::;;;:..  .:;:... ::;;::::..
+;;;;:::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;];;;;;;;;;;::::::;;;;:.::;;;;;;;;:..
+;;;;;;;;;;;;;;ii;;;;;;;;;;;;;;;;;;;;;;;;[;;;;;;;;;;;;;;;;;;;;;;:;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;iiiiiiii;;;;;;;;;;;;;;};;ii;;iiii;;;;i;;;;;;;;;;;;;;;ii;;;
+iiii;;;iiiiiiiiiiIIIIIIIIIIIiiiiiIiiiiii{iiIIiiiiiiiiiiiiiiii;;;;;iiiilliiiii
+IIIiiIIllllllIIlllIIIIlllIIIlIiiIIIIIIIIIIIIlIIIIIllIIIIIIIIiiiiiiiillIIIllII
+IIIiiilIIIIIIIllTIIIIllIIlIlIIITTTTlIlIlIIIlIITTTTTTTIIIIlIIllIlIlllIIIIIIITT
+IIIIilIIIIITTTTTTTIIIIIIIIIIIIITTTTTIIIIIIIIITTTTTTTTTTIIIIIIIIIlIIIIIIIITTTT
+IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 2);
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            DelayMessage(@"
+
+        The resourceful knight continues the quest for vengeance against 
+        the mighty Z'hur. He must collect items to increase his strength 
+        and defeat the devious monsters 'hidden' throughout the map.", 20);
+            music.IntroMusic();
         }
 
         public void MusicLoop()
@@ -67,7 +111,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
             MusicLoop();
         }
 
-        public static void DelayMessage(string message, int msDelay = 20)
+        public static void DelayMessage(string message, int msDelay)
         {
             for (int i = 0; i < message.Count(); i++)
             {
@@ -122,7 +166,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
-                        DelayMessage("You picked up item!");
+                        DelayMessage("You picked up item!", 20);
                         music.PickUpItemSFX();
                         world[x, y].ItemInRoom.PickUpItem(player);
                         world[x, y].ItemInRoom = null;
@@ -131,7 +175,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     else
                     {
                         music.CantPickUpItemSFX();
-                        DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!");
+                        DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!", 20);
                         backPackFull = true;
                     }
                     //kommentar
@@ -146,7 +190,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     {
                         CurrentAction = 3;
                     }
-                    DelayMessage(world[x, y].MonsterInRoom.Message(player));
+                    DelayMessage(world[x, y].MonsterInRoom.Message(player), 20);
                         Console.ReadLine();
                
                     player.Fight(world[x, y].MonsterInRoom);
@@ -167,7 +211,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
         private void GameOver()
         {
             Console.Clear();
-            DelayMessage("Game Over");
+            DelayMessage("Game Over", 20);
         }
 
         
