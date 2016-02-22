@@ -14,7 +14,7 @@ namespace DungeonsOfAWDragonsLair
         const int WorldHeight = 10;
         Player player;
         Room[,] world;
-        public string CurrentAction = "Exploring";
+        public int CurrentAction = 1;
         bool backPackFull = false;
         //bool monsterHere = false;
         Music music = new Music();
@@ -28,45 +28,41 @@ and defeat the devious monsters 'hidden' throughout the map.");
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                while (true)
-                {
-                    MusicLoop();
-                }
+                MusicLoop();
             },
-                             () =>
-                             {
-                                 do
-                                 {
-                                     Console.Clear();
-                                     DisplayWorld();
-                                     Console.BackgroundColor = ConsoleColor.Black;
-                                     DisplayStats();
-                                     AskForMovement();
-                                 } while (player.Health > 0);
-                                 GameOver();
-                             } 
-                         );
-            
+                            () =>
+                            {
+                                do
+                                {
+                                    Console.Clear();
+                                    DisplayWorld();
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    DisplayStats();
+                                    AskForMovement();
+                                } while (player.Health > 0);
+                                GameOver();
+                            } 
+                        );
         }
 
         public void MusicLoop()
         {
-            if (CurrentAction == "Exploring")
+            while (CurrentAction == 1)
             {
-                while (true)
-                {
-                    music.AdventureMusic();
-                }
+                music.AdventureMusic();
             }
-            else if (CurrentAction == "Battle")
+           
+            if (CurrentAction == 2)
             {
                 music.BattleMusic();
-                CurrentAction = "Exploring";
+                CurrentAction = 1;
+                MusicLoop();
             }
-            else if (CurrentAction == "Win")
+            else if (CurrentAction == 3)
             {
                 music.WinFight();
-                CurrentAction = "Exploring";
+                CurrentAction = 1;
+                MusicLoop();
             }
 
         }
@@ -145,11 +141,11 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 {
                     if (world[x,y].MonsterInRoom.Name == "Ogre")
                     {
-                        CurrentAction = "Battle";
+                        CurrentAction = 2;
                     }
                     else
                     {
-                        CurrentAction = "Win";
+                        CurrentAction = 3;
                     }
                     DelayMessage(world[x, y].MonsterInRoom.Message());
                         Console.ReadLine();
