@@ -11,12 +11,10 @@ namespace DungeonsOfAWDragonsLair
 
         public Gremlin(string name, int health, int attackStrength) : base(name, health, attackStrength)
         {
-
         }
 
         public override void Fight(Character opponent)
         {
-
             //opponent.AttackStrength >= AttackStrength * 2 ? Health = 0 : base.Fight(opponent);
 
             if ((opponent.AttackStrength / (AttackStrength) >= 2))
@@ -28,10 +26,17 @@ namespace DungeonsOfAWDragonsLair
                 base.Fight(opponent);
         }
 
-        public override string Message()
+        public override string Message(Character opponent)
         {
-            return @"You encountered a squemish Gremlin, and it immediately scurried down a hole. 
+            if ((opponent.AttackStrength / (AttackStrength) >= 2))
+            {
+                return @"You encountered an aggresive Gremlin.. SPLAT! ..and struck it down with your sword.";
+            }
+            else
+            {
+                return @"You encountered a squemish Gremlin, and it immediately scurried down a hole. 
 (Press enter to continue)";
+            }
         }
 
     }

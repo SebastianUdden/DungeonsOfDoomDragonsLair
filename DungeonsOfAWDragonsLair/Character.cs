@@ -17,7 +17,7 @@ namespace DungeonsOfAWDragonsLair
         public int Health { get; set; }
         public int AttackStrength{ get; set; }
 
-        public abstract string Message();
+        public abstract string Message(Character opponent);
 
         public abstract void Fight(Character opponent);
 

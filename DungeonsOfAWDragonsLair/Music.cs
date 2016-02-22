@@ -74,34 +74,18 @@ namespace DungeonsOfAWDragonsLair
 
         public void AdventureMusic()
         {
-            for (int i = 0; i < 2; i++)
+            while (true)
             {
-                Console.Beep(C4, HalfNote90);
-                Console.Beep(D4, HalfNote90);
-                Console.Beep(E4, HalfNote90);
-                Console.Beep(D4, HalfNote90);
-
-                Console.Beep(C4, HalfNote90);
-                Console.Beep(D4, HalfNote90);
-                Console.Beep(E4, QuarterNote90);
-                Console.Beep(F4, QuarterNote90);
-                Console.Beep(G4, QuarterNote90);
-                Console.Beep(D4, QuarterNote90);
-            }
-
-            for (int i = 0; i < 2; i++)
-            {
-                Console.Beep(D4, HalfNote90);
-                Console.Beep(E4, HalfNote90);
-                Console.Beep(Fs4, HalfNote90);
-                Console.Beep(E4, HalfNote90);
-
-                Console.Beep(D4, HalfNote90);
-                Console.Beep(E4, HalfNote90);
-                Console.Beep(Fs4, QuarterNote90);
-                Console.Beep(G4, QuarterNote90);
-                Console.Beep(A4, QuarterNote90);
-                Console.Beep(E4, QuarterNote90);
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(C4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(D4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(E4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(D4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(C4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(D4, QuarterNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(E4, EigthNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(F4, EigthNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(G4, EigthNote90); };
+                if (Game.CurrentAction != 1) { break; } else { Console.Beep(D4, EigthNote90); };
             }
         }
 

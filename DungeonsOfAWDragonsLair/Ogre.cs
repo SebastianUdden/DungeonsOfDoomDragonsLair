@@ -14,7 +14,7 @@ namespace DungeonsOfAWDragonsLair
 
         }
 
-        public override string Message()
+        public override string Message(Character opponent)
         {
             return @"You encountered a twoheaded Ogre, strike it down twice 
 (Press enter to continue)";

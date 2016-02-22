@@ -18,7 +18,7 @@ namespace DungeonsOfAWDragonsLair
 
         public List<Item> BackPack { get; set; }
 
-        public override string Message()
+        public override string Message(Character opponent)
         {
             return "player message";
         }

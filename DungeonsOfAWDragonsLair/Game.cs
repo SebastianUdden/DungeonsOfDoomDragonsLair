@@ -14,7 +14,7 @@ namespace DungeonsOfAWDragonsLair
         const int WorldHeight = 10;
         Player player;
         Room[,] world;
-        public int CurrentAction = 1;
+        public static int CurrentAction = 1;
         bool backPackFull = false;
         //bool monsterHere = false;
         Music music = new Music();
@@ -28,7 +28,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                MusicLoop();
+                    MusicLoop();
             },
                             () =>
                             {
@@ -47,12 +47,11 @@ and defeat the devious monsters 'hidden' throughout the map.");
 
         public void MusicLoop()
         {
-            while (CurrentAction == 1)
+            if (CurrentAction == 1)
             {
                 music.AdventureMusic();
             }
-           
-            if (CurrentAction == 2)
+            else if (CurrentAction == 2)
             {
                 music.BattleMusic();
                 CurrentAction = 1;
@@ -65,6 +64,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 MusicLoop();
             }
 
+            MusicLoop();
         }
 
         public static void DelayMessage(string message, int msDelay = 20)
@@ -85,15 +85,15 @@ and defeat the devious monsters 'hidden' throughout the map.");
             {
                 if (item.Name == "Sword" || item.Name == "Axe")
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                 }
                 else if (item.Name == "Shield" || item.Name == "Boots")
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                 }
                 else if (item.Name == "Potion")
                 {
-                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 }
                 Console.WriteLine(item.Name);
                 Console.BackgroundColor = ConsoleColor.Black;
@@ -122,7 +122,6 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
-                        
                         DelayMessage("You picked up item!");
                         music.PickUpItemSFX();
                         world[x, y].ItemInRoom.PickUpItem(player);
@@ -147,7 +146,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     {
                         CurrentAction = 3;
                     }
-                    DelayMessage(world[x, y].MonsterInRoom.Message());
+                    DelayMessage(world[x, y].MonsterInRoom.Message(player));
                         Console.ReadLine();
                
                     player.Fight(world[x, y].MonsterInRoom);
@@ -205,7 +204,8 @@ and defeat the devious monsters 'hidden' throughout the map.");
         }
         private void DisplayWorld()
         {
-            
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+
             for (int y = 0; y < WorldHeight; y++)
             {
                 for (int x = 0; x < WorldWidth; x++)
@@ -213,25 +213,27 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
                     {
-                        Console.BackgroundColor = ConsoleColor.DarkGray;
+                        Console.ForegroundColor = ConsoleColor.DarkGray;                        
                         Console.Write('P');
                     }
                     else if (room.MonsterInRoom != null && room.MonsterInRoom.Health>0)
                     {
-                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Monster monster = room.MonsterInRoom;
                         Console.Write(room.MonsterInRoom.Name[0]);
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (room.ItemInRoom != null)
                     {
-                        Console.BackgroundColor = ConsoleColor.DarkYellow;
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Item item = room.ItemInRoom;
                         Console.Write(item.Name.Substring(0,1));
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
-                        Console.Write('.');
+                        Console.Write(' ');
                 }
                 }
                 Console.WriteLine();
