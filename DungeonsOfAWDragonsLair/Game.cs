@@ -237,7 +237,10 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                                 DelayMessage(@"
         ________________________________________________
 ________|                                               |_______
-\       |", 1); Console.ForegroundColor = ConsoleColor.Yellow; DelayMessage(@"                  GAME  OVER", 5); Console.ForegroundColor = ConsoleColor.DarkRed; DelayMessage(@"                   |      /
+\       |", 1);
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                DelayMessage(@"                  GAME  OVER", 5);
+                                Console.ForegroundColor = ConsoleColor.DarkRed; DelayMessage(@"                   |      /
  \      |                                               |     /
  /      |_______________________________________________|     \
 /__________)                                        (__________\", 1);
