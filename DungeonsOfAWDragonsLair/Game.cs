@@ -104,19 +104,10 @@ namespace DungeonsOfAWDragonsLair
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
-                    if (world[x, y].MonsterInRoom.Name == "Ogre")
-                    {
-                        Console.WriteLine("You encountered a twoheaded Ogre, strike it down twice (Press enter to continue)");
+                        Console.WriteLine(world[x, y].MonsterInRoom.Message());
                         music.BattleMusic();
-         
                         Console.ReadLine();
-                    }
-                    else if (world[x, y].MonsterInRoom.Name == "Gremlin")
-                    {
-                        Console.WriteLine("You encountered a squemish Gremlin, and it immediately scurried down a hole. (Press enter to continue)");
-                        music.WinFight();
-                        Console.ReadLine();
-                    }
+               
                     player.Fight(world[x, y].MonsterInRoom);
                     if (world[x, y].MonsterInRoom.Health > 0)
                     {
