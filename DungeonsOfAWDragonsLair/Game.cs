@@ -9,7 +9,7 @@ namespace DungeonsOfAWDragonsLair
     class Game
     {
         
-        List<Item> itemsInWorld = new List<Item>() { new Item("Sword", 10), new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) };
+        List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2,20), new Sword("Sword", 10, 15) , new Axe("Axe",3,10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         Player player;
@@ -65,6 +65,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
         {
             Console.WriteLine($"Name: {player.Name}");
             Console.WriteLine($"Health: {player.Health}");
+            Console.WriteLine($"Attack: {player.AttackStrength}");
             Console.WriteLine($"Pos: {player.X}:{player.Y}");
             foreach (var item in player.BackPack)
             {
@@ -83,8 +84,8 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 Console.WriteLine(item.Name);
                 Console.BackgroundColor = ConsoleColor.Black;
             }
-            Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");         
-        }
+            Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
+            }
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
@@ -104,11 +105,13 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 player.Y = y;
                 if (world[x, y].ItemInRoom != null)
                 {
-                    Item item = new Item(world[x, y].ItemInRoom.Name, world[x, y].ItemInRoom.Weight);
-                    if ((player.BackPack.Sum(a => a.Weight) + item.Weight) <= 100)
+                    
+                    if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
-                        PickUpItem(item);
+                        
                         DelayMessage("You picked up item!");
+                        music.PickUpItemSFX();
+                        world[x, y].ItemInRoom.PickUpItem(player);
                         world[x, y].ItemInRoom = null;
                         backPackFull = false;
                     }
@@ -184,7 +187,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
         }
         private void CreatePlayer()
         {
-            player = new Player("Player", 100, 25);
+            player = new Player("Player", 100, 2);
         }
         private void DisplayWorld()
         {
@@ -209,7 +212,7 @@ and defeat the devious monsters 'hidden' throughout the map.");
                     {
                         Console.BackgroundColor = ConsoleColor.DarkYellow;
                         Item item = room.ItemInRoom;
-                        Console.Write('I');
+                        Console.Write(item.Name.Substring(0,1));
                     }
                     else
                     {
@@ -220,10 +223,6 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 Console.WriteLine();
             }
         }
-        private void PickUpItem(Item item)
-        {
-            music.PickUpItemSFX();
-            player.BackPack.Add(item);
-        }
+       
     }
 }

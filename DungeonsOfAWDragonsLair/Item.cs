@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DungeonsOfAWDragonsLair
 {
-    class Item : GameObject
+    abstract class Item : GameObject
     {
         // This is a item
         public Item(string name, int weigth) : base(name)
@@ -14,5 +14,8 @@ namespace DungeonsOfAWDragonsLair
             Weight = weigth;
         }
         public int Weight { get; set; }
+
+        public abstract void PickUpItem(Player player); 
+
     }
 }
