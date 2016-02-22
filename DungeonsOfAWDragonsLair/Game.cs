@@ -14,6 +14,7 @@ namespace DungeonsOfAWDragonsLair
         const int WorldHeight = 10;
         Player player;
         Room[,] world;
+        public string CurrentAction = "Exploring";
         bool backPackFull = false;
         //bool monsterHere = false;
         Music music = new Music();
@@ -27,7 +28,10 @@ and defeat the devious monsters 'hidden' throughout the map.");
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                MusicLoop();
+                while (true)
+                {
+                    MusicLoop();
+                }
             },
                              () =>
                              {
@@ -47,10 +51,24 @@ and defeat the devious monsters 'hidden' throughout the map.");
 
         public void MusicLoop()
         {
-            while (true)
+            if (CurrentAction == "Exploring")
             {
-                music.AdventureMusic();
+                while (true)
+                {
+                    music.AdventureMusic();
+                }
             }
+            else if (CurrentAction == "Battle")
+            {
+                music.BattleMusic();
+                CurrentAction = "Exploring";
+            }
+            else if (CurrentAction == "Win")
+            {
+                music.WinFight();
+                CurrentAction = "Exploring";
+            }
+
         }
 
         public static void DelayMessage(string message, int msDelay = 20)
@@ -127,11 +145,11 @@ and defeat the devious monsters 'hidden' throughout the map.");
                 {
                     if (world[x,y].MonsterInRoom.Name == "Ogre")
                     {
-                        music.BattleMusic();
+                        CurrentAction = "Battle";
                     }
                     else
                     {
-                        music.WinFight();
+                        CurrentAction = "Win";
                     }
                     DelayMessage(world[x, y].MonsterInRoom.Message());
                         Console.ReadLine();

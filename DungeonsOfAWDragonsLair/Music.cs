@@ -74,29 +74,35 @@ namespace DungeonsOfAWDragonsLair
 
         public void AdventureMusic()
         {
-            Console.Beep(C4, HalfNote90);
-            Console.Beep(D4, HalfNote90);
-            Console.Beep(E4, HalfNote90);
-            Console.Beep(D4, HalfNote90);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.Beep(C4, HalfNote90);
+                Console.Beep(D4, HalfNote90);
+                Console.Beep(E4, HalfNote90);
+                Console.Beep(D4, HalfNote90);
 
-            Console.Beep(C4, HalfNote90);
-            Console.Beep(D4, HalfNote90);
-            Console.Beep(E4, QuarterNote90);
-            Console.Beep(F4, QuarterNote90);
-            Console.Beep(G4, QuarterNote90);
-            Console.Beep(D4, QuarterNote90);
+                Console.Beep(C4, HalfNote90);
+                Console.Beep(D4, HalfNote90);
+                Console.Beep(E4, QuarterNote90);
+                Console.Beep(F4, QuarterNote90);
+                Console.Beep(G4, QuarterNote90);
+                Console.Beep(D4, QuarterNote90);
+            }
 
-            //Console.Beep(C4, HalfNote90);
-            //Console.Beep(D4, HalfNote90);
-            //Console.Beep(Ds4, HalfNote90);
-            //Console.Beep(D4, HalfNote90);
+            for (int i = 0; i < 2; i++)
+            {
+                Console.Beep(D4, HalfNote90);
+                Console.Beep(E4, HalfNote90);
+                Console.Beep(Fs4, HalfNote90);
+                Console.Beep(E4, HalfNote90);
 
-            //Console.Beep(G4, HalfNote90);
-            //Console.Beep(A4, HalfNote90);
-            //Console.Beep(Ds4, QuarterNote90);
-            //Console.Beep(F4, QuarterNote90);
-            //Console.Beep(G4, QuarterNote90);
-            //Console.Beep(D4, QuarterNote90);
+                Console.Beep(D4, HalfNote90);
+                Console.Beep(E4, HalfNote90);
+                Console.Beep(Fs4, QuarterNote90);
+                Console.Beep(G4, QuarterNote90);
+                Console.Beep(A4, QuarterNote90);
+                Console.Beep(E4, QuarterNote90);
+            }
         }
 
         public void BattleMusic()
@@ -106,7 +112,14 @@ namespace DungeonsOfAWDragonsLair
             Console.Beep(A4/2, EigthNote140); // 1
             Console.Beep(C4, SixteenthNote140); // 1
             Console.Beep(Cs4, SixteenthNote140); // 1
-            Console.Beep(A4, EigthNote140); // 1            
+            Console.Beep(A4, EigthNote140); // 1    
+
+            Console.Beep(A5 / 2, EigthNote140); // 1
+            Console.Beep(A5, EigthNote140); // 1
+            Console.Beep(A5 / 2, EigthNote140); // 1
+            Console.Beep(C5, SixteenthNote140); // 1
+            Console.Beep(Cs5, SixteenthNote140); // 1
+            Console.Beep(A5, EigthNote140); // 1                    
         }
 
         public void WinFight()
