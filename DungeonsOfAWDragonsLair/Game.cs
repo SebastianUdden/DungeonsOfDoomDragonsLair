@@ -25,6 +25,7 @@ namespace DungeonsOfAWDragonsLair
             {
                 Console.Clear();
                 DisplayWorld();
+                Console.BackgroundColor = ConsoleColor.Black;
                 DisplayStats();
                 AskForMovement();
                 //player.Health--;
@@ -38,7 +39,20 @@ namespace DungeonsOfAWDragonsLair
             Console.WriteLine($"Pos: {player.X}:{player.Y}");
             foreach (var item in player.BackPack)
             {
+                if (item.Name == "Sword" || item.Name == "Axe")
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                }
+                else if (item.Name == "Shield" || item.Name == "Boots")
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                }
+                else if (item.Name == "Potion")
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                }
                 Console.WriteLine(item.Name);
+                Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
             if (backPackFull)
@@ -52,7 +66,6 @@ namespace DungeonsOfAWDragonsLair
             if (monsterHere)
             {
                 Console.WriteLine("there is a monster in this room");
-                music.BattleMusic();
             }
         }
         private void AskForMovement()
@@ -90,6 +103,18 @@ namespace DungeonsOfAWDragonsLair
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
+                    if (world[x, y].MonsterInRoom.Name == "Ogre")
+                    {
+                        Console.WriteLine("You encountered a twoheaded Ogre, strike it down twice (Press enter to continue)");
+                        music.BattleMusic();
+                        Console.ReadLine();
+                    }
+                    else if (world[x, y].MonsterInRoom.Name == "Gremlin")
+                    {
+                        Console.WriteLine("You encountered a squemish Gremlin, and it immediately scurried down a hole. (Press enter to continue)");
+                        music.WinFight();
+                        Console.ReadLine();
+                    }
                     player.Fight(world[x, y].MonsterInRoom);
                     if (world[x, y].MonsterInRoom.Health > 0)
                     {
@@ -132,10 +157,6 @@ namespace DungeonsOfAWDragonsLair
                     world[x, y] = room;
                 }
             }
-            //placera ut ett monster
-            //world[2, 2].MonsterInRoom = new Monster("Monster", 30, 10);
-            //placera ut ett item
-            //world[0, 0].ItemInRoom = new Item("Item", 10);
         }
         private void CreatePlayer()
         {
@@ -150,19 +171,27 @@ namespace DungeonsOfAWDragonsLair
                 {
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGray;
                         Console.Write('P');
+                    }
                     else if (room.MonsterInRoom != null && room.MonsterInRoom.Health>0)
                     {
+                        Console.BackgroundColor = ConsoleColor.Red;
                         Monster monster = room.MonsterInRoom;
                         Console.Write(room.MonsterInRoom.Name[0]);
                     }
                     else if (room.ItemInRoom != null)
                     {
+                        Console.BackgroundColor = ConsoleColor.DarkYellow;
                         Item item = room.ItemInRoom;
                         Console.Write('I');
                     }
                     else
+                    {
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.Write('.');
+                    }
                 }
                 Console.WriteLine();
             }
