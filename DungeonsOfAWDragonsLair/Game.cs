@@ -63,10 +63,10 @@ namespace DungeonsOfAWDragonsLair
             {
                 Console.WriteLine("You picked up item!");
             }
-            if (monsterHere)
-            {
-                Console.WriteLine("there is a monster in this room");
-            }
+            //if (monsterHere)
+            //{
+            //    Console.WriteLine("there is a monster in this room");
+            //}
         }
         private void AskForMovement()
         {
@@ -107,6 +107,7 @@ namespace DungeonsOfAWDragonsLair
                     {
                         Console.WriteLine("You encountered a twoheaded Ogre, strike it down twice (Press enter to continue)");
                         music.BattleMusic();
+         
                         Console.ReadLine();
                     }
                     else if (world[x, y].MonsterInRoom.Name == "Gremlin")
@@ -119,6 +120,10 @@ namespace DungeonsOfAWDragonsLair
                     if (world[x, y].MonsterInRoom.Health > 0)
                     {
                         world[x, y].MonsterInRoom.Fight(player);
+                    }
+                    else
+                    {
+                        world[x, y].MonsterInRoom = null;
                     }
                     //monsterHere = true;
                 }
