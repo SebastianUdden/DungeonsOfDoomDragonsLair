@@ -19,6 +19,9 @@ namespace DungeonsOfAWDragonsLair
         Music music = new Music();
         public void Start()
         {
+            DelayMessage(@"The resourceful knight continues the quest for vengeance against 
+the mighty Z'hur. He must collect items to increase his strength 
+and defeat the devious monsters 'hidden' throughout the map.");
             music.IntroMusic();
             CreatePlayer();
             CreateWorld();
@@ -32,6 +35,14 @@ namespace DungeonsOfAWDragonsLair
                 //player.Health--;
             } while (player.Health > 0);
             GameOver();
+        }
+        public static void DelayMessage(string message, int msDelay = 20)
+        {
+            for (int i = 0; i < message.Count(); i++)
+            {
+                Console.Write(message[i]);
+                Thread.Sleep(msDelay);
+            }
         }
         private void DisplayStats()
         {
@@ -57,19 +68,7 @@ namespace DungeonsOfAWDragonsLair
                 Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
-            if (backPackFull)
-            {
-                Console.WriteLine($"Item to big, can't fit in backpack!");
             }
-            else
-            {
-                Console.WriteLine("You picked up item!");
-            }
-            //if (monsterHere)
-            //{
-            //    Console.WriteLine("there is a monster in this room");
-            //}
-        }
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
@@ -92,6 +91,8 @@ namespace DungeonsOfAWDragonsLair
                     
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
+                        PickUpItem(item);
+                        DelayMessage("You picked up item!");
                         music.PickUpItemSFX();
                         world[x, y].ItemInRoom.PickUpItem(player);
                         world[x, y].ItemInRoom = null;
@@ -100,14 +101,22 @@ namespace DungeonsOfAWDragonsLair
                     else
                     {
                         music.CantPickUpItemSFX();
+                        DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!");
                         backPackFull = true;
                     }
                     //kommentar
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
-                        Console.WriteLine(world[x, y].MonsterInRoom.Message());
+                    if (world[x,y].MonsterInRoom.Name == "Ogre")
+                    {
                         music.BattleMusic();
+                    }
+                    else
+                    {
+                        music.WinFight();
+                    }
+                    DelayMessage(world[x, y].MonsterInRoom.Message());
                         Console.ReadLine();
                
                     player.Fight(world[x, y].MonsterInRoom);
@@ -128,17 +137,10 @@ namespace DungeonsOfAWDragonsLair
         private void GameOver()
         {
             Console.Clear();
-            Console.WriteLine("Game Over");
+            DelayMessage("Game Over");
         }
 
-        public void DelayMessage(string message, int msDelay = 20)
-        {
-            for (int i = 0; i < message.Count(); i++)
-            {
-                Console.Write(message[i]);
-                Thread.Sleep(msDelay);
-            }
-        }
+        
         private void CreateWorld()
         {
             Random rndGen = new Random();

@@ -30,7 +30,8 @@ namespace DungeonsOfAWDragonsLair
 
         public override string Message()
         {
-            return "You encountered a squemish Gremlin, and it immediately scurried down a hole. (Press enter to continue)";
+            return @"You encountered a squemish Gremlin, and it immediately scurried down a hole. 
+(Press enter to continue)";
         }
 
     }
