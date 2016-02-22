@@ -74,19 +74,19 @@ namespace DungeonsOfAWDragonsLair
 
         public void BattleMusic()
         {
-            Console.Beep(C4, EigthNote140); // 1
-            Console.Beep(C5, EigthNote140); // 1
-            Console.Beep(C4, EigthNote140); // 1
-            Console.Beep(C5, EigthNote140); // 1
-            Console.Beep(C4, EigthNote140); // 1
-            Console.Beep(C5, EigthNote140); // 1
+            //Console.Beep(C4, EigthNote140); // 1
+            //Console.Beep(C5, EigthNote140); // 1
+            //Console.Beep(C4, EigthNote140); // 1
+            //Console.Beep(C5, EigthNote140); // 1
+            //Console.Beep(C4, EigthNote140); // 1
+            //Console.Beep(C5, EigthNote140); // 1
 
             Console.Beep(A4/2, EigthNote140); // 1
             Console.Beep(A4, EigthNote140); // 1
             Console.Beep(A4/2, EigthNote140); // 1
-            Console.Beep(A4, EigthNote140); // 1
-            Console.Beep(A4/2, EigthNote140); // 1
-            Console.Beep(A4, EigthNote140); // 1
+            //Console.Beep(A4, EigthNote140); // 1
+            //Console.Beep(A4/2, EigthNote140); // 1
+            //Console.Beep(A4, EigthNote140); // 1
         }
 
         public void WinFight()
