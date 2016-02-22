@@ -25,17 +25,34 @@ and defeat the devious monsters 'hidden' throughout the map.");
             music.IntroMusic();
             CreatePlayer();
             CreateWorld();
-            do
+            Parallel.Invoke(() =>
             {
-                Console.Clear();
-                DisplayWorld();
-                Console.BackgroundColor = ConsoleColor.Black;
-                DisplayStats();
-                AskForMovement();
-                //player.Health--;
-            } while (player.Health > 0);
-            GameOver();
+                MusicLoop();
+            },
+                             () =>
+                             {
+                                 do
+                                 {
+                                     Console.Clear();
+                                     DisplayWorld();
+                                     Console.BackgroundColor = ConsoleColor.Black;
+                                     DisplayStats();
+                                     AskForMovement();
+                                 } while (player.Health > 0);
+                                 GameOver();
+                             } 
+                         );
+            
         }
+
+        public void MusicLoop()
+        {
+            while (true)
+            {
+                music.AdventureMusic();
+            }
+        }
+
         public static void DelayMessage(string message, int msDelay = 20)
         {
             for (int i = 0; i < message.Count(); i++)

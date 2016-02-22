@@ -72,22 +72,41 @@ namespace DungeonsOfAWDragonsLair
             Console.Beep(B4, WholeNote140); // 1
         }
 
-        public void BattleMusic()
+        public void AdventureMusic()
         {
-            //Console.Beep(C5, EigthNote140); // 1
-            //Console.Beep(C4, EigthNote140); // 1
-            //Console.Beep(C5, EigthNote140); // 1
-            //Console.Beep(C4, EigthNote140); // 1
-            //Console.Beep(C5, EigthNote140); // 1
+            Console.Beep(C4, HalfNote90);
+            Console.Beep(D4, HalfNote90);
+            Console.Beep(E4, HalfNote90);
+            Console.Beep(D4, HalfNote90);
 
+            Console.Beep(C4, HalfNote90);
+            Console.Beep(D4, HalfNote90);
+            Console.Beep(E4, QuarterNote90);
+            Console.Beep(F4, QuarterNote90);
+            Console.Beep(G4, QuarterNote90);
+            Console.Beep(D4, QuarterNote90);
+
+            //Console.Beep(C4, HalfNote90);
+            //Console.Beep(D4, HalfNote90);
+            //Console.Beep(Ds4, HalfNote90);
+            //Console.Beep(D4, HalfNote90);
+
+            //Console.Beep(G4, HalfNote90);
+            //Console.Beep(A4, HalfNote90);
+            //Console.Beep(Ds4, QuarterNote90);
+            //Console.Beep(F4, QuarterNote90);
+            //Console.Beep(G4, QuarterNote90);
+            //Console.Beep(D4, QuarterNote90);
+        }
+
+        public void BattleMusic()
+        {                    
             Console.Beep(A4/2, EigthNote140); // 1
             Console.Beep(A4, EigthNote140); // 1
             Console.Beep(A4/2, EigthNote140); // 1
             Console.Beep(C4, SixteenthNote140); // 1
             Console.Beep(Cs4, SixteenthNote140); // 1
-            Console.Beep(A4, EigthNote140); // 1
-            //Console.Beep(A4/2, EigthNote140); // 1
-            //Console.Beep(A4, EigthNote140); // 1
+            Console.Beep(A4, EigthNote140); // 1            
         }
 
         public void WinFight()
