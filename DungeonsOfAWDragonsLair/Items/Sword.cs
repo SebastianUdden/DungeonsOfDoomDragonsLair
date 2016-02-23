@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DungeonsOfAWDragonsLair;
+using Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfAWDragonsLair
+namespace Items
 {
     class Sword:Item 
     {

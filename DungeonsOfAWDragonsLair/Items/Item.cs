@@ -1,15 +1,16 @@
-﻿using System;
+﻿using DungeonsOfAWDragonsLair;
+using Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfAWDragonsLair
+namespace Items
 {
     abstract class Item : GameObject, ILuggable
     {
         public ConsoleColor Color { get; set; }
-        // This is a item
         public Item(string name, int weight, ConsoleColor color) : base(name)
         {
             Color = color;

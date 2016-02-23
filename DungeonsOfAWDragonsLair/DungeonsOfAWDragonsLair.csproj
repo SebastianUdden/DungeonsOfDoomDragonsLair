@@ -43,24 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Axe.cs" />
-    <Compile Include="Character.cs" />
-    <Compile Include="Dragon.cs" />
+    <Compile Include="Items\Axe.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Items\Dragon.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="Gremlin.cs" />
+    <Compile Include="Characters\Gremlin.cs" />
     <Compile Include="ILuggable.cs" />
-    <Compile Include="Item.cs" />
-    <Compile Include="Monster.cs" />
-    <Compile Include="Ogre.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Characters\Monster.cs" />
+    <Compile Include="Characters\Ogre.cs" />
     <Compile Include="Music.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Potion.cs" />
+    <Compile Include="Characters\Player.cs" />
+    <Compile Include="Items\Potion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomUtils.cs" />
     <Compile Include="Room.cs" />
-    <Compile Include="Sword.cs" />
+    <Compile Include="Items\Sword.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
