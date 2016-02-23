@@ -26,7 +26,6 @@ namespace DungeonsOfAWDragonsLair
         public override void Fight(Character opponent)
         {
             opponent.Health -= AttackStrength;
-            //Health -= opponent.AttackStrength; 
         }
     }
 }
