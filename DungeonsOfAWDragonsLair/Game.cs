@@ -34,6 +34,7 @@ namespace DungeonsOfAWDragonsLair
             //            );
 
             CreatePlayer();
+            player.BackPack.Add(new Axe("noob axe", 5, 2, ConsoleColor.Gray));
             CreateWorld();
             Parallel.Invoke(() =>
             {
