@@ -21,23 +21,24 @@ namespace DungeonsOfAWDragonsLair
         public void Start()
         {
             //GameOver();
-            Parallel.Invoke(() =>
-            {
-                music.IntroMusic();
-            },
-                            () =>
-                            {
-            Console.Clear();
-            Thread.Sleep(500);
-            Intro();
-                            }
-                        );
+
+            //Parallel.Invoke(() =>
+            //{
+            //    music.IntroMusic();
+            //},
+            //                () =>
+            //                {
+            //Console.Clear();
+            //Thread.Sleep(500);
+            //Intro();
+            //                }
+            //            );
             
             CreatePlayer();
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                    MusicLoop();
+                    //MusicLoop();
             },
                             () =>
                             {
@@ -149,7 +150,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 Console.BackgroundColor = ConsoleColor.Black;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
-            }
+        }
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
@@ -276,9 +277,9 @@ ________|                                               |_______
                     if (RandomUtils.RandomNumber(0, 26) > 24)
                     {
                         if (RandomUtils.RandomNumber(0, 2) == 1)
-                            room.MonsterInRoom = new Ogre("Ogre", 30, 10);
+                            room.MonsterInRoom = new Ogre("Ogre", 30, 10, 100);
                         else
-                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5);
+                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5, 10);
                     }
                     if (RandomUtils.RandomNumber(0, 21) > 19 && itemsInWorld.Count() > 0)
                     {

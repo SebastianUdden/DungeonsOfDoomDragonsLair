@@ -12,11 +12,8 @@ namespace DungeonsOfAWDragonsLair
 
         public int Weight { get; set; }
 
-        public string Name { get; set; }
-
         public Monster(string name, int health, int attackStrength, int weight) : base(name, health, attackStrength)
         {
-            Name = name;
             Weight = weight;
             MonsterCount++;
         }
