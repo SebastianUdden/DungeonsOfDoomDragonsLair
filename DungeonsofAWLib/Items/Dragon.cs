@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    class Dragon : Item
+    internal class Dragon : Item
     {
-        public int AttackStrength { get; set; }
+        internal int AttackStrength { get; set; }
 
-        public Dragon(string name, int weight, int attackstrength, ConsoleColor color) : base(name, weight, color = ConsoleColor.Magenta)
+        internal Dragon(string name, int weight, int attackstrength, ConsoleColor color) : base(name, weight, color = ConsoleColor.Magenta)
         {
         }
         public override void PickUp(Player player)

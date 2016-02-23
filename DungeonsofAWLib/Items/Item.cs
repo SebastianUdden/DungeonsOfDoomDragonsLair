@@ -10,10 +10,10 @@ using Elements;
 
 namespace Items
 {
-    abstract class Item : GameObject, ILuggable
+    internal abstract class Item : GameObject, ILuggable
     {
         public ConsoleColor Color { get; set; }
-        public Item(string name, int weight, ConsoleColor color) : base(name)
+        internal Item(string name, int weight, ConsoleColor color) : base(name)
         {
             Color = color;
             Weight = weight;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    class Potion: Item
+    internal class Potion: Item
     {
         public int Health { get; set; }
 

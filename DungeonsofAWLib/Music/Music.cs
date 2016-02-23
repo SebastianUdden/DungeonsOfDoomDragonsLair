@@ -10,9 +10,9 @@ using DungeonsOfAWLib;
 
 namespace DoAWMusic
 {
-    class Music
+    internal class Music
     {
-        public Music()
+        internal Music()
         {
             
         }
@@ -65,7 +65,7 @@ namespace DoAWMusic
         int ThirtySecondNote140 = 54;
         #endregion
 
-        public void IntroMusic()
+        internal void IntroMusic()
         {
             Console.Beep(C4, WholeNote140); // 1
             Console.Beep(G4, WholeNote140); // 1
@@ -88,7 +88,7 @@ namespace DoAWMusic
             Console.Beep(C4, WholeNote140); // 1
         }
 
-        public void AdventureMusic()
+        internal void AdventureMusic()
         {
             while (true)
             {
@@ -108,7 +108,7 @@ namespace DoAWMusic
             }
         }
 
-        public void BattleMusic()
+        internal void BattleMusic()
         {                    
             Console.Beep(A4/2, EigthNote140); // 1
             Console.Beep(A4, EigthNote140); // 1
@@ -125,7 +125,7 @@ namespace DoAWMusic
             Console.Beep(A5, EigthNote140); // 1                    
         }
 
-        public void WinFight()
+        internal void WinFight()
         {
             Console.Beep(C4, SixteenthNote140); // 1
             Console.Beep(D4, SixteenthNote140); // 1
@@ -144,19 +144,19 @@ namespace DoAWMusic
             Console.Beep(C5 * 2, SixteenthNote140); // 1
         }
 
-        public void PickUpItemSFX()
+        internal void PickUpItemSFX()
         {
             Console.Beep(G5, SixteenthNote140); // 1
             Console.Beep(A5, SixteenthNote140); // 1
         }
 
-        public void CantPickUpItemSFX()
+        internal void CantPickUpItemSFX()
         {
             Console.Beep(E4, HalfNote140); // 1
             Console.Beep(Ds4/2, QuarterNote140); // 1
         }
 
-        public void GameOverMusic()
+        internal void GameOverMusic()
         {
             Console.Beep(C5, HalfNote140);
             Console.Beep(D5, HalfNote140);

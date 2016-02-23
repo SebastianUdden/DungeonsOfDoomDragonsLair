@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    class Axe:Item
+    internal class Axe:Item
     {
-        public int AttackStrength { get; set; }
+        internal int AttackStrength { get; set; }
 
-        public Axe(string name, int weight, int attackStrength, ConsoleColor color):base(name,weight, color)
+        internal Axe(string name, int weight, int attackStrength, ConsoleColor color):base(name,weight, color)
         {
             AttackStrength = attackStrength;
         }
