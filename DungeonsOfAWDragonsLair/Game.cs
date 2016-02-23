@@ -145,14 +145,6 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 {
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
-                else if (item.Name == "Shield" || item.Name == "Boots")
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                }
-                else if (item.Name == "Potion")
-                {
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                }
                 Console.WriteLine(item.Name);
                 Console.BackgroundColor = ConsoleColor.Black;
             }
@@ -182,7 +174,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     {
                         DelayMessage($"You picked up item!", 20);
                         music.PickUpItemSFX();
-                        world[x, y].ItemInRoom.PickUpItem(player);
+                        world[x, y].ItemInRoom.PickUp(player);
                         world[x, y].ItemInRoom = null;
                         backPackFull = false;
                     }

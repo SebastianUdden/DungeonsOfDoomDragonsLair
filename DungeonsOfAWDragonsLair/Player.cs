@@ -10,13 +10,13 @@ namespace DungeonsOfAWDragonsLair
     {
         public Player(string name, int health, int attackStrength) : base(name, health, attackStrength)
         {
-            BackPack = new List<Item>();
+            BackPack = new List<ILuggable>();
         }
         public int X { get; set; }
 
         public int Y { get; set; }
 
-        public List<Item> BackPack { get; set; }
+        public List<ILuggable> BackPack { get; set; }
 
         public override string Message(Character opponent)
         {

@@ -15,7 +15,7 @@ namespace DungeonsOfAWDragonsLair
             AttackStrength = attackStrength;
         }
 
-        public override void PickUpItem(Player player)
+        public override void PickUp(Player player)
         {
             player.BackPack.Add(this);
             player.AttackStrength += AttackStrength/2;
