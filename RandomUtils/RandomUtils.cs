@@ -1,14 +1,12 @@
-﻿using Items;
-using Characters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DungeonsOfAWDragonsLair
+namespace Utils
 {
-    static class RandomUtils
+    public static class RandomUtils
     {
         static Random rndgen;
 
