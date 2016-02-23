@@ -8,7 +8,7 @@ namespace DungeonsOfAWDragonsLair
 {
     class Game
     {
-        List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2, 20), new Sword("Sword", 10, 15), new Axe("Axe", 3, 10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
+        List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20, ConsoleColor.Blue), new Potion("Yellow potion", 2, 5, ConsoleColor.Yellow), new Potion("Red potion", 2, 20, ConsoleColor.Red), new Sword("Sword", 10, 15, ConsoleColor.Yellow), new Axe("Axe", 3, 10, ConsoleColor.DarkRed)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
         const int WorldHeight = 10;
         Player player;
@@ -141,10 +141,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
             Console.WriteLine($"Pos: {player.X}:{player.Y}");
             foreach (var item in player.BackPack)
             {
-                if (item.Name == "Sword" || item.Name == "Axe")
-                {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                }
+                Console.ForegroundColor = item.Color;
                 Console.WriteLine(item.Name);
                 Console.ForegroundColor = ConsoleColor.White;
             }
@@ -172,11 +169,13 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
 
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
+                        world[x, y].ItemInRoom.PickUp(player);
+                        Console.ForegroundColor = player.BackPack.Last().Color;
                         DelayMessage($"You picked up item!", 20);
                         music.PickUpItemSFX();
-                        world[x, y].ItemInRoom.PickUp(player);
                         world[x, y].ItemInRoom = null;
                         backPackFull = false;
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else if (world[x, y].ItemInRoom.Name == "Dragon")
                     {
@@ -190,7 +189,6 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         DelayMessage($"Backpack is full!", 20);
                         backPackFull = true;
                     }
-                    //kommentar
                 }
                 if (world[x, y].MonsterInRoom != null)
                 {
@@ -202,7 +200,9 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     {
                         CurrentAction = 3;
                     }
+                    Console.ForegroundColor = world[x, y].MonsterInRoom.Color;
                     DelayMessage(world[x, y].MonsterInRoom.Message(player), 20);
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.ReadLine();
 
                     player.Fight(world[x, y].MonsterInRoom);
@@ -216,10 +216,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         Monster.MonsterCount--;
                         world[x, y].MonsterInRoom = null;
                     }
-                    //monsterHere = true;
                 }
-
-                //monsterHere = false;
             }
         }
         private void GameOver()
@@ -276,9 +273,9 @@ ________|                                               |_______
                     if (RandomUtils.RandomNumber(0, 26) > 24)
                     {
                         if (RandomUtils.RandomNumber(0, 2) == 1)
-                            room.MonsterInRoom = new Ogre("Ogre", 30, 10, 10);
+                            room.MonsterInRoom = new Ogre("Ogre", 30, 10, 10, ConsoleColor.Green);
                         else
-                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5, 5);
+                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5, 5, ConsoleColor.DarkMagenta);
                     }
                     if (RandomUtils.RandomNumber(0, 21) > 19 && itemsInWorld.Count() > 0)
                     {

@@ -10,9 +10,8 @@ namespace DungeonsOfAWDragonsLair
     {
         public int AttackStrength { get; set; }
 
-        public Dragon(string name, int weight, int attackstrength) : base(name, weight)
+        public Dragon(string name, int weight, int attackstrength, ConsoleColor color) : base(name, weight, color = ConsoleColor.Magenta)
         {
-
         }
         public override void PickUp(Player player)
         {

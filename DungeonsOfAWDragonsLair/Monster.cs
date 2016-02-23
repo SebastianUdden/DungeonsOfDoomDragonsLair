@@ -9,13 +9,13 @@ namespace DungeonsOfAWDragonsLair
     class Monster : Character, ILuggable
     {
         public static int MonsterCount { get; set; }
-
+        public ConsoleColor Color { get; set; }
         public int Weight { get; set; }
 
-
-        public Monster(string name, int health, int attackStrength, int weight) : base(name, health, attackStrength)
+        public Monster(string name, int health, int attackStrength, int weight, ConsoleColor color) : base(name, health, attackStrength)
         {
             Weight = weight;
+            Color = color;
             MonsterCount++;
         }
 

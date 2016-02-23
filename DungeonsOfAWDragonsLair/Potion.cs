@@ -10,7 +10,7 @@ namespace DungeonsOfAWDragonsLair
     {
         public int Health { get; set; }
 
-        public Potion(string name, int weight, int health):base(name,weight)
+        public Potion(string name, int weight, int health, ConsoleColor color):base(name,weight, color)
         {
             Health = health; 
         }

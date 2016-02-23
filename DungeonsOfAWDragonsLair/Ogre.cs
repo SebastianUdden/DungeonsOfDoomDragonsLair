@@ -9,7 +9,7 @@ namespace DungeonsOfAWDragonsLair
     class Ogre : Monster
     {
 
-        public Ogre(string name, int health, int attackstrength, int weight) : base(name, health, attackstrength, weight)
+        public Ogre(string name, int health, int attackstrength, int weight, ConsoleColor color) : base(name, health, attackstrength, weight, color)
         {
 
         }

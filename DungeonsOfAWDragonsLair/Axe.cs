@@ -10,7 +10,7 @@ namespace DungeonsOfAWDragonsLair
     {
         public int AttackStrength { get; set; }
 
-        public Axe(string name, int weight, int attackStrength):base(name,weight)
+        public Axe(string name, int weight, int attackStrength, ConsoleColor color):base(name,weight, color)
         {
             AttackStrength = attackStrength;
         }

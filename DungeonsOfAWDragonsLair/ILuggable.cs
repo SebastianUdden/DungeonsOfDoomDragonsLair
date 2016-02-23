@@ -10,6 +10,7 @@ namespace DungeonsOfAWDragonsLair
     {
         int Weight { get; set; }
         string Name { get; }
+        ConsoleColor Color { get;}
         void PickUp(Player player);
     }
 }
