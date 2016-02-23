@@ -99,6 +99,9 @@ namespace DungeonsOfAWDragonsLair
                 if (Game.CurrentAction != 1) { break; } else { Console.Beep(F4, EigthNote90); };
                 if (Game.CurrentAction != 1) { break; } else { Console.Beep(G4, EigthNote90); };
                 if (Game.CurrentAction != 1) { break; } else { Console.Beep(D4, EigthNote90); };
+
+                Thread.Sleep(WholeNote90);
+                Thread.Sleep(WholeNote90);
             }
         }
 
