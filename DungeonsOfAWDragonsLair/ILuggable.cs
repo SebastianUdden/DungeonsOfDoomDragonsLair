@@ -9,9 +9,7 @@ namespace DungeonsOfAWDragonsLair
     interface ILuggable
     {
         int Weight { get; set; }
-
         string Name { get; }
-
         void PickUp(Player player);
     }
 }

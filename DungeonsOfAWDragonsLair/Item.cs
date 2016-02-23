@@ -14,8 +14,6 @@ namespace DungeonsOfAWDragonsLair
             Weight = weigth;
         }
         public int Weight { get; set; }
-
         public abstract void PickUp(Player player); 
-
     }
 }

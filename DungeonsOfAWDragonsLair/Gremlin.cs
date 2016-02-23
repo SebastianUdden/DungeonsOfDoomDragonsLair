@@ -8,7 +8,6 @@ namespace DungeonsOfAWDragonsLair
 {
     class Gremlin : Monster
     {
-
         public Gremlin(string name, int health, int attackStrength, int weight) : base(name, health, attackStrength, weight)
         {
         }

@@ -21,23 +21,24 @@ namespace DungeonsOfAWDragonsLair
         public void Start()
         {
             //GameOver();
-            Parallel.Invoke(() =>
-            {
-                music.IntroMusic();
-            },
-                            () =>
-                            {
-            Console.Clear();
-            Thread.Sleep(500);
-            Intro();
-                            }
-                        );
+
+            //Parallel.Invoke(() =>
+            //{
+            //    music.IntroMusic();
+            //},
+            //                () =>
+            //                {
+            //Console.Clear();
+            //Thread.Sleep(500);
+            //Intro();
+            //                }
+            //            );
             
             CreatePlayer();
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                    MusicLoop();
+                    //MusicLoop();
             },
                             () =>
                             {
