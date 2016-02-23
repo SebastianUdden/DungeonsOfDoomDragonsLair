@@ -8,7 +8,6 @@ namespace DungeonsOfAWDragonsLair
 {
     class Game
     {
-        
         List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20), new Potion("Yellow potion", 2, 5), new Potion("Red potion", 2, 20), new Sword("Sword", 10, 15), new Axe("Axe", 3, 10)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
         const int WorldHeight = 10;
@@ -33,12 +32,12 @@ namespace DungeonsOfAWDragonsLair
             //Intro();
             //                }
             //            );
-            
+
             CreatePlayer();
             CreateWorld();
             Parallel.Invoke(() =>
             {
-                    //MusicLoop();
+                //MusicLoop();
             },
                             () =>
                             {
@@ -51,7 +50,7 @@ namespace DungeonsOfAWDragonsLair
                                     AskForMovement();
                                 } while (player.Health > 0 && Monster.MonsterCount > 0);
                                 GameOver();
-                            } 
+                            }
                         );
         }
 
@@ -147,7 +146,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
                 Console.WriteLine(item.Name);
-                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
         }
@@ -170,7 +169,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 player.Y = y;
                 if (world[x, y].ItemInRoom != null)
                 {
-                    
+
                     if ((player.BackPack.Sum(a => a.Weight) + world[x, y].ItemInRoom.Weight) <= 100)
                     {
                         DelayMessage($"You picked up item!", 20);
@@ -198,8 +197,8 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         CurrentAction = 3;
                     }
                     DelayMessage(world[x, y].MonsterInRoom.Message(player), 20);
-                        Console.ReadLine();
-               
+                    Console.ReadLine();
+
                     player.Fight(world[x, y].MonsterInRoom);
                     if (world[x, y].MonsterInRoom.Health > 0)
                     {
@@ -212,8 +211,8 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     }
                     //monsterHere = true;
                 }
-                
-                    //monsterHere = false;
+
+                //monsterHere = false;
             }
         }
         private void GameOver()
@@ -255,24 +254,17 @@ ________|                                               |_______
                                     Console.ReadKey();
                                     GameOver();
                                 }
-
-
                             }
                         );
-
-            
         }
 
-        
         private void CreateWorld()
         {
-            
             world = new Room[WorldWidth, WorldHeight];
             for (int y = 0; y < WorldHeight; y++)
             {
                 for (int x = 0; x < WorldWidth; x++)
                 {
-
                     Room room = new Room();
                     if (RandomUtils.RandomNumber(0, 26) > 24)
                     {
@@ -306,7 +298,7 @@ ________|                                               |_______
                     Room room = world[x, y];
                     if (player.X == x && player.Y == y)
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkGray;                        
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write('P');
                     }
                     else if (room.MonsterInRoom != null && room.MonsterInRoom.Health > 0)
@@ -327,11 +319,10 @@ ________|                                               |_______
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGreen;
                         Console.Write(' ');
-                }
+                    }
                 }
                 Console.WriteLine();
             }
         }
-       
     }
 }
