@@ -1,4 +1,4 @@
-﻿using DungeonsOfAWDragonsLair;
+﻿using DungeonsOfAWLib;
 using Items;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ namespace Characters
     class Ogre : Monster
     {
 
-        public Ogre(string name, int health, int attackstrength, int weight, ConsoleColor color) : base(name, health, attackstrength, weight, color)
+        internal Ogre(string name, int health, int attackstrength, int weight, ConsoleColor color) : base(name, health, attackstrength, weight, color)
         {
 
         }
 
-        public override string Message(Character opponent)
+        internal override string Message(Character opponent)
         {
             return @"You encountered a twoheaded Ogre, strike it down twice 
 (Press enter to continue)";

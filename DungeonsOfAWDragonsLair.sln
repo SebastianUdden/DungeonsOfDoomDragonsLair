@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsOfAWDragonsLair", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "RandomUtils\Utils.csproj", "{DA9B12E4-C403-4FB0-B305-5FBC5757B564}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonsofAWLib", "DungeonsofAWLib\DungeonsofAWLib.csproj", "{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DA9B12E4-C403-4FB0-B305-5FBC5757B564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA9B12E4-C403-4FB0-B305-5FBC5757B564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA9B12E4-C403-4FB0-B305-5FBC5757B564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

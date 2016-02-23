@@ -1,4 +1,4 @@
-﻿using DungeonsOfAWDragonsLair;
+﻿using DungeonsOfAWLib;
 using Characters;
 using System;
 using System.Collections.Generic;
@@ -8,20 +8,17 @@ using System.Threading.Tasks;
 
 namespace Items
 {
-    class Axe:Item
+    class Dragon : Item
     {
         public int AttackStrength { get; set; }
 
-        public Axe(string name, int weight, int attackStrength, ConsoleColor color):base(name,weight, color)
+        public Dragon(string name, int weight, int attackstrength, ConsoleColor color) : base(name, weight, color = ConsoleColor.Magenta)
         {
-            AttackStrength = attackStrength;
         }
-
         public override void PickUp(Player player)
         {
             player.BackPack.Add(this);
-            player.AttackStrength += AttackStrength/2;
+            player.AttackStrength += AttackStrength;
         }
-
     }
 }

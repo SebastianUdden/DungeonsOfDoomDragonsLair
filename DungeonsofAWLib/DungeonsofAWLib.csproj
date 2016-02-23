@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{83DD3222-D562-470E-AE45-766A58237349}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{633FEE2F-6E1E-4E95-A5D8-67285FF5AE8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DungeonsOfAWDragonsLair</RootNamespace>
-    <AssemblyName>DungeonsOfAWDragonsLair</AssemblyName>
+    <RootNamespace>DungeonsofAWLib</RootNamespace>
+    <AssemblyName>DungeonsofAWLib</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,16 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\Gremlin.cs" />
+    <Compile Include="Characters\Monster.cs" />
+    <Compile Include="Characters\Ogre.cs" />
+    <Compile Include="Characters\Player.cs" />
+    <Compile Include="Elements\GameObject.cs" />
+    <Compile Include="Elements\Room.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Interfaces\ILuggable.cs" />
+    <Compile Include="Items\Axe.cs" />
+    <Compile Include="Items\Dragon.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\Potion.cs" />
+    <Compile Include="Items\Sword.cs" />
+    <Compile Include="Music\Music.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DungeonsofAWLib\DungeonsofAWLib.csproj">
-      <Project>{633fee2f-6e1e-4e95-a5d8-67285ff5ae8c}</Project>
-      <Name>DungeonsofAWLib</Name>
+    <ProjectReference Include="..\RandomUtils\Utils.csproj">
+      <Project>{da9b12e4-c403-4fb0-b305-5fbc5757b564}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

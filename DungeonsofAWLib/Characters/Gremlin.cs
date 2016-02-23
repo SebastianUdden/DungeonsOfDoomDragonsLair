@@ -1,4 +1,4 @@
-﻿using DungeonsOfAWDragonsLair;
+﻿using DungeonsOfAWLib;
 using Items;
 using System;
 using System.Collections.Generic;
@@ -10,11 +10,11 @@ namespace Characters
 {
     class Gremlin : Monster
     {
-        public Gremlin(string name, int health, int attackStrength, int weight, ConsoleColor color) : base(name, health, attackStrength, weight, color)
+        internal Gremlin(string name, int health, int attackStrength, int weight, ConsoleColor color) : base(name, health, attackStrength, weight, color)
         {
         }
 
-        public override void Fight(Character opponent)
+        internal override void Fight(Character opponent)
         {
             if ((opponent.AttackStrength / (AttackStrength) >= 2))
             {
@@ -25,7 +25,7 @@ namespace Characters
                 base.Fight(opponent);
         }
 
-        public override string Message(Character opponent)
+        internal override string Message(Character opponent)
         {
             if ((opponent.AttackStrength / (AttackStrength) >= 2))
             {

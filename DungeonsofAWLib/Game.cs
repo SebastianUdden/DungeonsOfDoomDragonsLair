@@ -11,9 +11,9 @@ using DoAWMusic;
 using Interfaces;
 using Elements;
 
-namespace DungeonsOfAWDragonsLair
+namespace DungeonsOfAWLib
 {
-    class Game
+    public class Game
     {
         List<Item> itemsInWorld = new List<Item>() { new Potion("Blue potion", 2, -20, ConsoleColor.Blue), new Potion("Yellow potion", 2, 5, ConsoleColor.Yellow), new Potion("Red potion", 2, 20, ConsoleColor.Red), new Sword("Sword", 10, 15, ConsoleColor.Yellow), new Axe("Axe", 3, 10, ConsoleColor.DarkRed)/*, new Item("Shield", 15), new Item("Boots", 5), new Item("Axe", 20), new Item("Potion", 1), new Item("Dragon", 500) */};
         const int WorldWidth = 20;
@@ -107,7 +107,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
         and defeat the devious monsters 'hidden' throughout the map.", 20);
         }
 
-        public void MusicLoop()
+        void MusicLoop()
         {
             if (CurrentAction == 1)
             {
@@ -133,7 +133,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
             MusicLoop();
         }
 
-        public static void DelayMessage(string message, int msDelay)
+        static void DelayMessage(string message, int msDelay)
         {
             for (int i = 0; i < message.Count(); i++)
             {
