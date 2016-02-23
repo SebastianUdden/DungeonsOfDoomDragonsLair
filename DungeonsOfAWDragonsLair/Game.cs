@@ -149,7 +149,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                 Console.ForegroundColor = ConsoleColor.White;
             }
             Console.WriteLine($"Total weight: {player.BackPack.Sum(x => x.Weight)}");
-        }
+            }
         private void AskForMovement()
         {
             Console.WriteLine("Move!");
@@ -206,6 +206,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     }
                     else
                     {
+                        player.BackPack.Add(world[x, y].MonsterInRoom);
                         Monster.MonsterCount--;
                         world[x, y].MonsterInRoom = null;
                     }
@@ -269,9 +270,9 @@ ________|                                               |_______
                     if (RandomUtils.RandomNumber(0, 26) > 24)
                     {
                         if (RandomUtils.RandomNumber(0, 2) == 1)
-                            room.MonsterInRoom = new Ogre("Ogre", 30, 10, 100);
+                            room.MonsterInRoom = new Ogre("Ogre", 30, 10, 10);
                         else
-                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5, 10);
+                            room.MonsterInRoom = new Gremlin("Gremlin", 10, 5, 5);
                     }
                     if (RandomUtils.RandomNumber(0, 21) > 19 && itemsInWorld.Count() > 0)
                     {
