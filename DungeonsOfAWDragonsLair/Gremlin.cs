@@ -14,8 +14,6 @@ namespace DungeonsOfAWDragonsLair
 
         public override void Fight(Character opponent)
         {
-            //opponent.AttackStrength >= AttackStrength * 2 ? Health = 0 : base.Fight(opponent);
-
             if ((opponent.AttackStrength / (AttackStrength) >= 2))
             {
                 Health = 0;
