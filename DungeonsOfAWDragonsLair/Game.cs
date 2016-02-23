@@ -207,6 +207,7 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                     }
                     else
                     {
+                        player.BackPack.Add(world[x, y].MonsterInRoom);
                         Monster.MonsterCount--;
                         world[x, y].MonsterInRoom = null;
                     }
