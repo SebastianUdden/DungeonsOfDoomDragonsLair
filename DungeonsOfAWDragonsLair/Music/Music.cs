@@ -6,8 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using DungeonsOfAWDragonsLair;
 
-namespace DungeonsOfAWDragonsLair
+namespace DoAWMusic
 {
     class Music
     {

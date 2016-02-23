@@ -47,18 +47,18 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Items\Dragon.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameObject.cs" />
+    <Compile Include="Elements\GameObject.cs" />
     <Compile Include="Characters\Gremlin.cs" />
-    <Compile Include="ILuggable.cs" />
+    <Compile Include="Interfaces\ILuggable.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Characters\Monster.cs" />
     <Compile Include="Characters\Ogre.cs" />
-    <Compile Include="Music.cs" />
+    <Compile Include="Music\Music.cs" />
     <Compile Include="Characters\Player.cs" />
     <Compile Include="Items\Potion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Room.cs" />
+    <Compile Include="Elements\Room.cs" />
     <Compile Include="Items\Sword.cs" />
   </ItemGroup>
   <ItemGroup>
