@@ -8,16 +8,16 @@ namespace DungeonsOfAWDragonsLair
 {
     static class RandomUtils
     {
-        private static Random rndGen;
+        static Random rndgen;
 
         static RandomUtils()
         {
-            rndGen = new Random();
+            rndgen = new Random();
         }
 
         public static int RandomNumber(int min, int max)
         {
-            return rndGen.Next(min, max);
+            return rndgen.Next(min, max);
         }
 
     }

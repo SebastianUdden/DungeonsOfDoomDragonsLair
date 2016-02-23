@@ -15,7 +15,7 @@ namespace DungeonsOfAWDragonsLair
             Health = health; 
         }
 
-        public override void PickUpItem(Player player)
+        public override void PickUp(Player player)
         {
       
             player.Health += Health;
