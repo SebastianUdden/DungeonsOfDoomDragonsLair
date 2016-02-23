@@ -178,10 +178,16 @@ IIIIIIIIITTTTTTTTTTTTTIIIIIIIITTTTTTTTIIIIIITTTTTTTTTTTTTTIIIIIIIIIIIIIITTTTT", 
                         world[x, y].ItemInRoom = null;
                         backPackFull = false;
                     }
-                    else
+                    else if (world[x, y].ItemInRoom.Name == "Dragon")
                     {
                         music.CantPickUpItemSFX();
                         DelayMessage($"Dragon is to big, can't fit in backpack... You need to obtain truck first!", 20);
+                        backPackFull = true;
+                    }
+                    else
+                    {
+                        music.CantPickUpItemSFX();
+                        DelayMessage($"Backpack is full!", 20);
                         backPackFull = true;
                     }
                     //kommentar
