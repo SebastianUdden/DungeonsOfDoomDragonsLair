@@ -10,7 +10,7 @@ namespace DungeonsOfAWDragonsLair
     {
         int Weight { get; set; }
 
-        //string Name { get; set; }
+        string Name { get; }
 
         void PickUp(Player player);
     }
